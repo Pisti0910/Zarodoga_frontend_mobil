@@ -46,7 +46,7 @@ function HomeStack() {
   return (
     <Stack.Navigator options={{ headerShown: false}}>
       <Stack.Screen name="HomeTabs" component={HomeTabs} options={{ title: 'Home', headerShown: false, }} />
-      <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Screen name="Details" component={DetailsScreen} options={{ title: 'Részletek' }} />
     </Stack.Navigator>
   );
 }
