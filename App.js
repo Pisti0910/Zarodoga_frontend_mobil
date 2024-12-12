@@ -32,7 +32,7 @@ function HomeTabs() {
       }} />
       <Tab.Screen name="Profile" component={ProfileScreen} options={{ title: 'Felhasználók' }} />
       <Tab.Screen name="SajatMenu" component={SajatMenu} 
-      options={{ title: 'Sajat' ,
+      options={{ title: 'Saját' ,
                 headerShown: false,
                 tabBarIcon: () => (
                   <MaterialCommunityIcons name="home-group" size={24} color="black" />
