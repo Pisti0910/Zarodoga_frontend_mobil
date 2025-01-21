@@ -6,8 +6,8 @@ import Ip from './Ip'; // Az Ip modul importálása
 export default function Tanacsok({ navigation }) {
     const [adatok, setAdatok] = useState([]);
     const [szurtAdatok, setSzurtAdatok] = useState([]);
-    const [kivalasztottNev, setKivalasztottNev] = useState(""); 
-    const [kereso, setKereso] = useState(""); 
+    const [kivalasztottNev, setKivalasztottNev] = useState("");
+    const [kereso, setKereso] = useState("");
     const [loading, setLoading] = useState(false);
 
     const letoltes = async () => {
@@ -35,35 +35,20 @@ export default function Tanacsok({ navigation }) {
     useEffect(() => {
         let filteredData = adatok;
 
-        // Ha nincs "Összes" kiválasztva, szűrjük a nevet
-        if (kivalasztottNev && kivalasztottNev !== "Összes") {
+        if (kivalasztottNev !== "") {
             filteredData = filteredData.filter((item) => item.Nev === kivalasztottNev);
         }
 
-        // Keresés funkció
         if (kereso !== "") {
             filteredData = filteredData.filter(
                 (item) =>
                     item.Nev.toLowerCase().includes(kereso.toLowerCase()) ||
-                    item.tanacs_cim.toLowerCase().includes(kereso.toLowerCase()) ||
-                    item.tanacs_szoveg.toLowerCase().includes(kereso.toLowerCase())
+                    item.tanacs_cim.toLowerCase().includes(kereso.toLowerCase())
             );
         }
 
         setSzurtAdatok(filteredData);
     }, [kivalasztottNev, kereso, adatok]);
-
-    // Kiemelés funkció
-    function highlightText(text, search) {
-        if (!search) return text;
-
-        const parts = text.split(new RegExp(`(${search})`, 'gi')); // A keresett szót daraboljuk
-        return parts.map((part, index) => 
-            part.toLowerCase() === search.toLowerCase() 
-                ? <Text key={index} style={styles.highlight}>{part}</Text>
-                : part
-        );
-    }
 
     function hozzaadEgyNap(datum) {
         const ujDatum = new Date(datum);
@@ -77,7 +62,7 @@ export default function Tanacsok({ navigation }) {
 
             <TextInput
                 style={styles.input}
-                placeholder="Keresés név, cím vagy szöveg alapján..."
+                placeholder="Keresés név vagy cím alapján..."
                 value={kereso}
                 onChangeText={setKereso}
             />
@@ -88,7 +73,6 @@ export default function Tanacsok({ navigation }) {
                 style={styles.picker}
             >
                 <Picker.Item label="Válassz egy sportolót..." value="" color="gray" />
-                <Picker.Item label="Összes" value="Összes" />
                 {[...new Set(adatok.map((item) => item.Nev))].map((nev, index) => (
                     <Picker.Item key={index} label={nev} value={nev} />
                 ))}
@@ -101,9 +85,9 @@ export default function Tanacsok({ navigation }) {
                     data={szurtAdatok}
                     renderItem={({ item }) => (
                         <View style={styles.itemContainer}>
-                            <Text style={styles.itemTitle}>{highlightText(item.Nev, kereso)}</Text>
-                            <Text style={styles.itemSubtitle}>{highlightText(item.tanacs_cim, kereso)}</Text>
-                            <Text style={styles.itemText}>{highlightText(item.tanacs_szoveg, kereso)}</Text>
+                            <Text style={styles.itemTitle}>{item.Nev}</Text>
+                            <Text style={styles.itemSubtitle}>{item.tanacs_cim}</Text>
+                            <Text style={styles.itemText}>{item.tanacs_szoveg}</Text>
                             <Text style={styles.itemDate}>{hozzaadEgyNap(item.datum)}</Text>
                         </View>
                     )}
@@ -162,9 +146,5 @@ const styles = StyleSheet.create({
     itemDate: {
         fontSize: 14,
         color: "#555",
-    },
-    highlight: {
-        backgroundColor: "#ffff00",  // Sárga háttér szín a kiemelt szóra
-        fontWeight: "bold",
     },
 });

@@ -32,7 +32,7 @@ export default function BeleptetesMashogy({ navigation, onLogin}) {
            
 
              // Hívjuk meg az App.js onLogin függvényét
-      onLogin(y[0].felhasznalo_id, y[0].felhasznalo_nev);
+      onLogin(y[0].fel_id, y[0].felh_nev);
       //alert("onLogin meghívva", y[0]);
         }
      

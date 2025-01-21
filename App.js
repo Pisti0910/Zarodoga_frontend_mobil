@@ -22,6 +22,7 @@ import VideosScreen from './screens/VideosScreen';
 import BeleptetesMashogy from './screens/BeleptetesMashogy'
 import BelepettUjMenu from './screens/BelepettUjMenu';
 import Kilepes from './screens/Kilepes';
+import ProfileScreenBelepett from './screens/ProfileScreenBelepett';
 
 
 const Drawer = createDrawerNavigator();
@@ -37,6 +38,7 @@ export default function App() {
  // Függvény a belépés kezelésére
  const kezeldBelepes = (id, nev) => {
   setBelepett(true);
+  alert(id)
   setFelhasznaloAdat({ id, nev });
   
 };
@@ -145,7 +147,18 @@ const kezeldKilepes = () => {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="HomeStack" >
         <Drawer.Screen name="HomeStack" component={HomeStack} options={{ title: 'Főmenü' }} />
-        <Drawer.Screen name="Profile" component={ProfileScreen} options={{ title: 'Felhasználók' }}/>
+        {belepett ?
+           <Drawer.Screen
+           name="ProfileScreenBelepett"
+         >
+           {props => (
+             <ProfileScreenBelepett {...props} id={felhasznaloAdat.id} onLogout={kezeldKilepes} />
+           )}
+         </Drawer.Screen>
+         :
+         <Drawer.Screen name="Profile" component={ProfileScreen} options={{ title: 'Felhasználók' }}/>
+         }
+      
         <Drawer.Screen name="SajatStack" component={SajatStack} options={{ title: 'Saját menü' }}/>
         <Drawer.Screen name="Tanacsok" component={Tanacsok} options={{ title: 'Tanácsok' }}/>
         <Drawer.Screen name="Focistak" component={Focistak} options={{ title: 'Focisták' }}/>
@@ -174,7 +187,7 @@ const kezeldKilepes = () => {
           </Drawer.Screen>
       
         ):
-        <Drawer.Screen name="BeleptetesStack" component={BeleptetesStack} />      
+        <Drawer.Screen name="BeleptetesStack" component={BeleptetesStack} options={{ title: 'Beléptetés' }} />      
         }    
 
 
