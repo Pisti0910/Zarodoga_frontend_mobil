@@ -178,7 +178,7 @@ const kezeldKilepes = () => {
   {/* Belépés után plusz üdv és kilépés*/}
     {belepett ? (
           <Drawer.Screen
-            name="Kilepes"
+            name="Kilepes" options={{ title: 'Kilépés' }}
             
           >
             {props => (
