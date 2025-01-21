@@ -149,10 +149,10 @@ const kezeldKilepes = () => {
         <Drawer.Screen name="HomeStack" component={HomeStack} options={{ title: 'Főmenü' }} />
         {belepett ?
            <Drawer.Screen
-           name="ProfileScreenBelepett"
+           name="ProfileScreenBelepett" options={{ title: 'Felhasználók' }}
          >
            {props => (
-             <ProfileScreenBelepett {...props} id={felhasznaloAdat.id} onLogout={kezeldKilepes} options={{ title: 'Felhasználók (Belépett)' }} />
+             <ProfileScreenBelepett {...props} id={felhasznaloAdat.id} onLogout={kezeldKilepes} />
            )}
          </Drawer.Screen>
          :
@@ -168,10 +168,10 @@ const kezeldKilepes = () => {
   {/* Belépés után plusz menüpont a drawerben*/}
   {belepett && (
                     <Drawer.Screen
-                    name="BelepettUjMenu"
+                    name="BelepettUjMenu" options={{ title: 'Belépett' }}
                   >
                     {props => (
-                      <BelepettUjMenu {...props} id={felhasznaloAdat.id} nev={felhasznaloAdat.nev} onLogout={kezeldKilepes} options={{ title: 'Belépett' }} />
+                      <BelepettUjMenu {...props} id={felhasznaloAdat.id} nev={felhasznaloAdat.nev} onLogout={kezeldKilepes} />
                     )}
                   </Drawer.Screen>
     )}

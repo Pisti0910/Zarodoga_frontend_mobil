@@ -120,7 +120,7 @@ export default function ProfileScreenBelepett({id}) {
                             <Text style={styles.itemText}>Testtömeg: {item.felh_suly || "N/A"} kg</Text>
                             <Text style={styles.itemText}>Mit nem szeret enni: {item.felh_nemszeret || "N/A"}</Text>
                             {/* Gomb a modális ablak megnyitásához */}
-                            <Button title="További részletek" onPress={() => openModal(item)} />
+                            <Button title="Üzenet" onPress={() => openModal(item)} />
                         </View>
                     )}
                     keyExtractor={(item, index) => (item.fel_id ? item.fel_id.toString() : index.toString())}
@@ -137,8 +137,8 @@ export default function ProfileScreenBelepett({id}) {
                 >
                     <View style={styles.modalContainer}>
                         <View style={styles.modalContent}>
-                            <Text style={styles.modalTitle}>Részletes információk</Text>
-                            <Text style={styles.modalText}>Név: {selectedUser.felh_nev}</Text>
+                            <Text style={styles.modalTitle}>Üzenőfal</Text>
+                            <Text style={styles.modalText}>{selectedUser.felh_nev}</Text>
 
                             {/* Üzenet beviteli mező */}
                             <TextInput

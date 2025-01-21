@@ -6,7 +6,7 @@ export default function Kilepes({ navigation, id, nev, onLogout }) {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Belepes utan</Text>
+      <Text>Belépés után</Text>
       <Text>{id} {nev}</Text>
      <Button title="Kilépés" onPress={() => {onLogout()} }/>
         

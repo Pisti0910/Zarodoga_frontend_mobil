@@ -6,7 +6,7 @@ export default function BelepettUjMenu({ navigation , id, nev}) {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Belepett menüpontja</Text>
       <Text>{id} {nev}</Text>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title="Vissza a főmenűre" onPress={() => navigation.goBack()} />
     </View>
   );
 }
