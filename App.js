@@ -152,7 +152,7 @@ const kezeldKilepes = () => {
            name="ProfileScreenBelepett"
          >
            {props => (
-             <ProfileScreenBelepett {...props} id={felhasznaloAdat.id} onLogout={kezeldKilepes} />
+             <ProfileScreenBelepett {...props} id={felhasznaloAdat.id} onLogout={kezeldKilepes} options={{ title: 'Felhasználók (Belépett)' }} />
            )}
          </Drawer.Screen>
          :
@@ -171,7 +171,7 @@ const kezeldKilepes = () => {
                     name="BelepettUjMenu"
                   >
                     {props => (
-                      <BelepettUjMenu {...props} id={felhasznaloAdat.id} nev={felhasznaloAdat.nev} onLogout={kezeldKilepes} />
+                      <BelepettUjMenu {...props} id={felhasznaloAdat.id} nev={felhasznaloAdat.nev} onLogout={kezeldKilepes} options={{ title: 'Belépett' }} />
                     )}
                   </Drawer.Screen>
     )}
