@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator, TextInput, TouchableOpacity, Linking } from 'react-native';
 import Ip from './Ip';
 
 export default function Focistak({ navigation }) {
@@ -7,11 +7,21 @@ export default function Focistak({ navigation }) {
     const [szurtAdatok, setSzurtAdatok] = useState([]);
     const [loading, setLoading] = useState(true);
     const [kereso, setKereso] = useState("");
+    const [allampolgarsagSzuro, setAllampolgarsagSzuro] = useState("");
 
     const letoltes = async () => {
         try {
             const response = await fetch(Ip.Ipcim + "Sportoloklista");
             const data = await response.json();
+
+            // Rendezzük az adatokat, hogy a külföldiek előbb jöjjenek
+            data.sort((a, b) => {
+                const aIsForeign = !a.Allampolgarsag.toLowerCase().includes("magyar");
+                const bIsForeign = !b.Allampolgarsag.toLowerCase().includes("magyar");
+                // Külföldiek előre, magyarok a végére
+                return aIsForeign === bIsForeign ? 0 : aIsForeign ? -1 : 1;
+            });
+
             setAdatok(data);
             setSzurtAdatok(data);
         } catch (error) {
@@ -26,11 +36,18 @@ export default function Focistak({ navigation }) {
     }, []);
 
     useEffect(() => {
+        // Keresés név alapján
         const filteredData = adatok.filter((item) =>
             item.Nev && item.Nev.toLowerCase().includes(kereso.toLowerCase())
         );
-        setSzurtAdatok(filteredData);
-    }, [kereso, adatok]);
+
+        // Szűrés állampolgárság alapján
+        const filteredByCountry = allampolgarsagSzuro
+            ? filteredData.filter((item) => item.Allampolgarsag && item.Allampolgarsag.toLowerCase().includes(allampolgarsagSzuro.toLowerCase()))
+            : filteredData;
+
+        setSzurtAdatok(filteredByCountry);
+    }, [kereso, allampolgarsagSzuro, adatok]);
 
     return (
         <View style={styles.container}>
@@ -42,6 +59,14 @@ export default function Focistak({ navigation }) {
                 placeholder="Keresés név alapján..."
                 value={kereso}
                 onChangeText={(text) => setKereso(text)}
+            />
+
+            {/* Szűrő az állampolgárságra */}
+            <TextInput
+                style={styles.input}
+                placeholder="Keresés állampolgárság alapján..."
+                value={allampolgarsagSzuro}
+                onChangeText={(text) => setAllampolgarsagSzuro(text)}
             />
 
             {loading ? (
@@ -66,9 +91,14 @@ export default function Focistak({ navigation }) {
                             <Text style={styles.itemText}>Jelenlegi klubja: {item.Jelenlegi_csapata || "N/A"}</Text>
                             <Text style={styles.itemText}>Volt klubja(i): {item.Elozo_Csapatai || "N/A"}</Text>
                             <Text style={styles.itemText}>Státusza: {item.Statusza || "N/A"}</Text>
+                            <TouchableOpacity 
+                                style={styles.button} 
+                                onPress={() => Linking.openURL(item.wikipedia)}>
+                                <Text style={{color:"white"}}>{item.Nev} wikipédia oldala</Text>
+                            </TouchableOpacity>
                         </View>
                     )}
-                    keyExtractor={(item, index) => (item.id ? item.id.toString() : index.toString())}
+                    keyExtractor={(item, index) => (item.ID ? item.ID.toString() : index.toString())}
                 />
             )}
         </View>
@@ -115,5 +145,12 @@ const styles = StyleSheet.create({
     itemText: {
         fontStyle: "italic",
         marginBottom: 5,
+    },
+    button: {
+        backgroundColor: "blue",
+        padding: 10,
+        marginTop: 10,
+        borderRadius: 5,
+        alignItems: "center",
     },
 });
