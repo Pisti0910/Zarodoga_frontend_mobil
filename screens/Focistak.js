@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator, TextInput, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator, TouchableOpacity, Linking, TextInput } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown'; // Import Dropdown
 import Ip from './Ip';
 
 export default function Focistak({ navigation }) {
@@ -36,12 +37,10 @@ export default function Focistak({ navigation }) {
     }, []);
 
     useEffect(() => {
-        // Keresés név alapján
         const filteredData = adatok.filter((item) =>
             item.Nev && item.Nev.toLowerCase().includes(kereso.toLowerCase())
         );
 
-        // Szűrés állampolgárság alapján
         const filteredByCountry = allampolgarsagSzuro
             ? filteredData.filter((item) => item.Allampolgarsag && item.Allampolgarsag.toLowerCase().includes(allampolgarsagSzuro.toLowerCase()))
             : filteredData;
@@ -49,11 +48,28 @@ export default function Focistak({ navigation }) {
         setSzurtAdatok(filteredByCountry);
     }, [kereso, allampolgarsagSzuro, adatok]);
 
+    // Dropdown options for "állampolgárság" (Citizenship)
+    const citizenshipOptions = [
+        { label: 'Összes', value: '' },
+        { label: 'Magyar', value: 'magyar' },
+        { label: 'Angol', value: 'angol' },
+        { label: 'Spanyol', value: 'spanyol' },
+        { label: 'Német', value: 'nemet' },
+        { label: 'Francia', value: 'francia' },
+        { label: 'Olasz', value: 'olasz' },
+        { label: 'Portugál', value: 'portugál' },
+        { label: 'Brazíliai', value: 'brazil' },
+        { label: 'Argentin', value: 'argentin' },
+        { label: 'Belgiumi', value: 'belgium' },
+        { label: 'Egyiptomi', value: 'egyiptomi' },
+    ];
+    
+
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Focisták</Text>
             
-            {/* Keresőmező */}
+            {/* Keresés név alapján */}
             <TextInput
                 style={styles.input}
                 placeholder="Keresés név alapján..."
@@ -61,12 +77,15 @@ export default function Focistak({ navigation }) {
                 onChangeText={(text) => setKereso(text)}
             />
 
-            {/* Szűrő az állampolgárságra */}
-            <TextInput
-                style={styles.input}
-                placeholder="Keresés állampolgárság alapján..."
+            {/* Szűrő az állampolgárságra - Dropdown */}
+            <Dropdown
+                style={styles.dropdown}
+                data={citizenshipOptions} // Use the citizenship options
+                labelField="label"
+                valueField="value"
+                placeholder="Válassz állampolgárságot"
                 value={allampolgarsagSzuro}
-                onChangeText={(text) => setAllampolgarsagSzuro(text)}
+                onChange={(item) => setAllampolgarsagSzuro(item.value)}  // Set the selected citizenship
             />
 
             {loading ? (
@@ -119,6 +138,15 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     input: {
+        width: "100%",
+        height: 40,
+        borderColor: "#ccc",
+        borderWidth: 1,
+        borderRadius: 5,
+        marginBottom: 15,
+        paddingHorizontal: 10,
+    },
+    dropdown: {
         width: "100%",
         height: 40,
         borderColor: "#ccc",
