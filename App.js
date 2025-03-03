@@ -23,7 +23,7 @@ import BeleptetesMashogy from './screens/BeleptetesMashogy'
 import BelepettUjMenu from './screens/BelepettUjMenu';
 import Kilepes from './screens/Kilepes';
 import ProfileScreenBelepett from './screens/ProfileScreenBelepett';
-
+import Uzenetek from './screens/Uzenetek';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -172,6 +172,15 @@ const kezeldKilepes = () => {
                   >
                     {props => (
                       <BelepettUjMenu {...props} id={felhasznaloAdat.id} nev={felhasznaloAdat.nev} onLogout={kezeldKilepes} />
+                    )}
+                  </Drawer.Screen>
+    )}
+    {belepett && (
+                    <Drawer.Screen
+                    name="Uzenetek" options={{ title: 'Üzenetek' }}
+                  >
+                    {props => (
+                      <Uzenetek {...props} id={felhasznaloAdat.id} nev={felhasznaloAdat.nev} onLogout={kezeldKilepes} />
                     )}
                   </Drawer.Screen>
     )}
