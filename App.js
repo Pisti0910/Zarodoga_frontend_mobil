@@ -25,6 +25,12 @@ import Kilepes from './screens/Kilepes';
 import ProfileScreenBelepett from './screens/ProfileScreenBelepett';
 import Uzenetek from './screens/Uzenetek';
 
+import PickerScreen from './screens/PickerScreen';
+import UresOldal from './screens/UresOldal.js';
+import adatokPicker from './screens/adatokPicker';
+import Etrend from './screens/Etrend';
+
+
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -75,25 +81,30 @@ const kezeldKilepes = () => {
   function EdzesTabs() {
     return (
       <Tab.Navigator>
-        <Tab.Screen name="Edzés felvitel" component={WorkoutForm} 
-        options={{ title: 'Edzés rögzítés' ,
-                  headerShown: false,
-                  tabBarIcon: () => (
-                    <Entypo name="home" size={24} color="black" />
-                  )
-        }} />
+        <Tab.Screen
+          name="Edzés felvitel"
+          component={WorkoutForm}
+          options={{
+            title: 'Edzés rögzítés',
+            headerShown: false,
+            tabBarIcon: () => <Entypo name="home" size={24} color="black" />,
+          }}
+        />
         <Tab.Screen name="Edzésátlag" component={WorkoutSummary} options={{ title: 'Edzéselemzés' }} />
-        <Tab.Screen name="Videók" component={VideosScreen} 
-        options={{ title: 'Edzős videók' ,
-                  headerShown: false,
-                  tabBarIcon: () => (
-                    <MaterialCommunityIcons name="home-group" size={24} color="black" />
-                  )
-        }} />
+        <Tab.Screen name="PickerScreen" component={PickerScreen} options={{ title: 'PickerScreen' }} />
+        <Tab.Screen
+          name="Videók"
+          component={VideosScreen}
+          options={{
+            title: 'Edzős videók',
+            headerShown: false,
+            tabBarIcon: () => <MaterialCommunityIcons name="home-group" size={24} color="black" />,
+          }}
+        />
       </Tab.Navigator>
     );
   }
-  
+
   function HomeStack() {
     return (
       <Stack.Navigator options={{ headerShown: false}}>
@@ -162,9 +173,7 @@ const kezeldKilepes = () => {
         <Drawer.Screen name="SajatStack" component={SajatStack} options={{ title: 'Saját menü' }}/>
         <Drawer.Screen name="Tanacsok" component={Tanacsok} options={{ title: 'Tanácsok' }}/>
         <Drawer.Screen name="Focistak" component={Focistak} options={{ title: 'Focisták' }}/>
-        {belepett && (     
-        <Drawer.Screen name="EdzesStack" component={EdzesStack} options={{ title: 'Edzés' }}/>
-        )}
+       
   {/* Belépés után plusz menüpont a drawerben*/}
   {belepett && (
                     <Drawer.Screen
@@ -184,6 +193,42 @@ const kezeldKilepes = () => {
                     )}
                   </Drawer.Screen>
     )}
+
+{belepett && (
+          <Drawer.Screen name="EdzesTabs" component={EdzesTabs} options={{ title: 'Edzés' }} />
+
+          /*<Drawer.Screen name="Etrend" component={Etrend} options={{ title: 'Étrend' }} />*/
+          
+
+        )}
+
+
+{belepett && (
+          <Drawer.Screen name="Adatok">
+            {(props) => (
+              <UresOldal
+                {...props}
+                id={felhasznaloAdat.id}
+                nev={felhasznaloAdat.nev}
+                onLogout={kezeldKilepes}
+                options={{ title: 'Belépett' }}
+              />
+            )}
+          </Drawer.Screen>
+        )}
+         {belepett && (
+          <Drawer.Screen name="Étrend">
+            {(props) => (
+              <Etrend
+                {...props}
+                id={felhasznaloAdat.id}
+                nev={felhasznaloAdat.nev}
+                onLogout={kezeldKilepes}
+                options={{ title: 'Belépett' }}
+              />
+            )}
+          </Drawer.Screen>
+        )}
   {/* Belépés után plusz üdv és kilépés*/}
     {belepett ? (
           <Drawer.Screen

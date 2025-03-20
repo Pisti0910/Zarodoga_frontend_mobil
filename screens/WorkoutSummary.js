@@ -10,7 +10,17 @@ const WorkoutSummary = () => {
   useEffect(() => {
     const fetchWeeklySummary = async () => {
       try {
-        const response = await fetch(Ip.Ipcim + 'EdzesAtlag'); // Backend endpoint
+        let adatok = {
+          "bevitel1":4
+        }
+
+        const response = await fetch(Ip.Ipcim + 'EdzesAtlag',
+        {
+          method: "POST",
+          body: JSON.stringify(adatok),
+          headers: {"Content-type": "application/json; charset=UTF-8"}
+        }
+        ); // Backend endpoint
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
