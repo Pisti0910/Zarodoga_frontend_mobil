@@ -82,27 +82,38 @@ const WorkoutSummary = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFE8D6', // Halvány narancsos háttér
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20,
     paddingHorizontal: 20,
+    paddingTop: 20,
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#D84315', // Mély narancsos szöveg
     marginBottom: 20,
   },
   item: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#FFF7F1', // Világos háttér a kártyákhoz
     padding: 15,
     marginBottom: 10,
     width: '100%',
-    borderRadius: 8,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderLeftWidth: 5,
+    borderLeftColor: '#FF7043', // Pirosas-narancs kiemelés a bal oldalon
   },
   itemText: {
     fontSize: 16,
+    color: '#6D4C41', // Meleg barna a szövegekhez
     marginBottom: 5,
   },
 });
+
 
 export default WorkoutSummary;

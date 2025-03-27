@@ -95,7 +95,7 @@ export default function Tanacsok({ navigation }) {
             </Picker>
 
             {loading ? (
-                <ActivityIndicator size="large" color="#0000ff" />
+                <ActivityIndicator size="large" color="#FF7043" />
             ) : (
                 <FlatList
                     data={szurtAdatok}
@@ -119,18 +119,19 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 60,
         padding: 20,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFE8D6", // Halvány narancsos háttér
     },
     header: {
         fontSize: 30,
         fontWeight: "bold",
         marginBottom: 20,
         textAlign: "center",
+        color: "#FF7043", // Narancssárga szín a címhez
     },
     input: {
         width: "100%",
         height: 40,
-        borderColor: "#ccc",
+        borderColor: "#FF7043", // Narancssárga szegély
         borderWidth: 1,
         borderRadius: 5,
         marginBottom: 15,
@@ -140,31 +141,40 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 60,
         marginBottom: 20,
+        backgroundColor: "#fff", // Fehér háttér a Pickernek
+        borderRadius: 5,
+        borderColor: "#FF7043", // Narancssárga szegély
+        borderWidth: 1,
     },
     itemContainer: {
         marginVertical: 10,
         padding: 15,
-        backgroundColor: "#f0f0f0",
+        backgroundColor: "#fff", // Fehér háttér a tanácsoknak
         borderRadius: 5,
+        borderColor: "#FF7043", // Narancssárga szegély
+        borderWidth: 1,
     },
     itemTitle: {
         fontSize: 20,
         fontWeight: "bold",
+        color: "#333",
     },
     itemSubtitle: {
         fontSize: 16,
         marginVertical: 5,
+        color: "#555",
     },
     itemText: {
         fontStyle: "italic",
         marginBottom: 5,
+        color: "#777",
     },
     itemDate: {
         fontSize: 14,
         color: "#555",
     },
     highlight: {
-        backgroundColor: "#ffff00",  // Sárga háttér szín a kiemelt szóra
+        backgroundColor: "#ffff00", // Sárga háttér szín a kiemelt szóra
         fontWeight: "bold",
     },
 });

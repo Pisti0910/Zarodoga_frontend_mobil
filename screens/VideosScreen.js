@@ -54,26 +54,42 @@ const VideosScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    padding: 10,
+    backgroundColor: '#FFE8D6', // Halvány narancsos háttér
+    padding: 15,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
+    color: '#D84315', // Narancsos cím
   },
   videoContainer: {
+    backgroundColor: '#FFF7F1', // Világos háttér a videókhoz
+    padding: 15,
+    borderRadius: 10,
     marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderLeftWidth: 5,
+    borderLeftColor: '#FF7043', // Pirosas-narancs kiemelés a bal oldalon
   },
   videoTitle: {
     fontSize: 18,
+    fontWeight: 'bold',
     marginBottom: 5,
+    color: '#6D4C41', // Meleg barna szöveg
   },
   webview: {
-    height: 200,  // Videó magasságának beállítása
+    height: 200, // Videó magasságának beállítása
     width: '100%',
+    borderRadius: 10,
+    overflow: 'hidden', // iOS-en szükséges lehet a borderRadius alkalmazásához
   },
 });
+
 
 export default VideosScreen;

@@ -122,17 +122,46 @@ export default function WorkoutForm() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFE8D6', // Halvány narancsos háttér
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#D84315', // Mély narancsos cím
+    marginBottom: 20,
   },
   input: {
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 10,
     width: '100%',
+    borderColor: '#FF7043', // Narancsos szegély
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
     paddingLeft: 10,
+    backgroundColor: '#FFF7F1', // Világos háttér a bemeneti mezőknek
+  },
+  button: {
+    backgroundColor: '#FF7043', // Narancsos gomb háttér
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    marginTop: 20,
+  },
+  buttonText: {
+    color: '#FFF', // Fehér szöveg a gombon
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  pickerButton: {
+    backgroundColor: '#FF7043', // Narancsos szín a Picker gombhoz
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    marginBottom: 20,
   },
 });
+

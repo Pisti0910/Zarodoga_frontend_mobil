@@ -80,41 +80,55 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 60,
         padding: 20,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFFAF0", // Világos narancssárga háttér
     },
     header: {
-        fontSize: 30,
-        fontWeight: "bold",
-        marginBottom: 20,
+        fontSize: 32,
+        fontWeight: "700",
+        marginBottom: 30,
         textAlign: "center",
+        color: "#FF5733", // Narancssárga szín
     },
     input: {
         width: "100%",
-        height: 40,
-        borderColor: "#ccc",
+        height: 50,
+        borderColor: "#FF7F50", // Narancssárga árnyalat
         borderWidth: 1,
-        borderRadius: 5,
-        marginBottom: 15,
-        paddingHorizontal: 10,
+        borderRadius: 25,
+        marginBottom: 20,
+        paddingHorizontal: 15,
+        backgroundColor: "#FFFFFF",
+        fontSize: 16,
     },
     itemContainer: {
-        marginVertical: 10,
-        padding: 15,
-        backgroundColor: "#f0f0f0",
-        borderRadius: 5,
+        marginVertical: 12,
+        padding: 20,
+        backgroundColor: "#FFFFFF",
+        borderRadius: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 6,
+        elevation: 3,
+        borderLeftWidth: 5,
+        borderLeftColor: "#FF5733", // Narancssárga sáv
     },
     itemTitle: {
-        fontSize: 20,
-        fontWeight: "bold",
-    },
-    kepek: {
-        width: 140,
-        height: 140,
+        fontSize: 22,
+        fontWeight: "600",
+        color: "#FF5733", // Narancssárga cím
         marginBottom: 10,
     },
+    kepek: {
+        width: 120,
+        height: 120,
+        borderRadius: 10,
+        marginBottom: 15,
+        alignSelf: "center",
+    },
     itemText: {
-        fontStyle: "italic",
-        marginBottom: 5,
+        fontSize: 16,
+        color: "#7F8C8D",
+        marginBottom: 8,
     },
 });
-

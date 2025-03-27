@@ -129,56 +129,75 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 60,
         padding: 20,
-        backgroundColor: "#fff",
+        backgroundColor: "#FFF5E1", // Halvány narancssárga háttér
     },
     header: {
-        fontSize: 30,
+        fontSize: 32,
         fontWeight: "bold",
         marginBottom: 20,
         textAlign: "center",
+        color: "#D98A47", // Narancssárga szín a címszövegekhez
     },
     input: {
         width: "100%",
-        height: 40,
-        borderColor: "#ccc",
+        height: 45,
+        borderColor: "#F8C58C", // Halvány narancs szín a kontúroknál
         borderWidth: 1,
-        borderRadius: 5,
+        borderRadius: 10, // Lekerekített sarkok
         marginBottom: 15,
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
+        backgroundColor: "#FFF0E1", // Halvány narancssárga háttér az inputoknak
     },
     dropdown: {
         width: "100%",
-        height: 40,
-        borderColor: "#ccc",
+        height: 45,
+        borderColor: "#F8C58C", // Halvány narancs szín a kontúroknál
         borderWidth: 1,
-        borderRadius: 5,
+        borderRadius: 10, // Lekerekített sarkok
         marginBottom: 15,
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
+        backgroundColor: "#FFF0E1", // Halvány narancssárga háttér a dropdown-nak
     },
     itemContainer: {
-        marginVertical: 10,
+        marginVertical: 12,
         padding: 15,
-        backgroundColor: "#f0f0f0",
-        borderRadius: 5,
+        backgroundColor: "#FCE3C5", // Halvány narancssárga háttér
+        borderRadius: 10, // Lekerekített sarkok
+        shadowColor: "#000", // Árnyék a jobb megjelenésért
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
     },
     itemTitle: {
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: "bold",
+        color: "#D98A47", // Narancssárga szín a címszövegekhez
     },
     kepek: {
         width: 140,
         height: 140,
         marginBottom: 10,
+        borderRadius: 10, // Kerek sarkú képek
     },
     itemText: {
         fontStyle: "italic",
         marginBottom: 5,
+        color: "#D98A47", // Narancsos szöveg szín
     },
     button: {
-        backgroundColor: "blue",
-        padding: 10,
+        backgroundColor: "#FF8C42", // Erősebb narancssárga szín a gombokhoz
+        padding: 12,
         marginTop: 10,
-        borderRadius: 5,
+        borderRadius: 8, // Lekerekített gombok
         alignItems: "center",
+        shadowColor: "#000", // Árnyék hozzáadása
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+    },
+    buttonText: {
+        color: "white", // Fehér gomb szöveg
+        fontSize: 16,
     },
 });
+

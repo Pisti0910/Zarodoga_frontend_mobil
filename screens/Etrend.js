@@ -27,7 +27,7 @@ const [adatok, setAdatok] = useState([]);
             }
             const data = await response.json();
 
-            alert(JSON.stringify(data))
+            //alert(JSON.stringify(data))
             setAdatok(data);  // Frissítsd a célok állapotát
             
            
@@ -46,7 +46,7 @@ const [adatok, setAdatok] = useState([]);
                     data={adatok}
                     renderItem={({ item }) => (
                         <View style={styles.itemContainer}>
-                               <Text style={styles.itemTitle}>{item.cel_nev}</Text>
+                               <Text style={styles.itemTitle}>{item.cel_nev}:</Text>
                             <Text style={styles.itemTitle}>{item.etrend_leiras}</Text>
                            
                         </View>
@@ -61,11 +61,34 @@ const [adatok, setAdatok] = useState([]);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#FFE8D6', // Halvány narancsos háttér
+    padding: 10,
   },
-  title: {
-    fontSize: 20,
+  itemContainer: {
+    backgroundColor: '#FFF7F1', // Világos törtfehér kártya háttér
+    padding: 15,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderLeftWidth: 5,
+    borderLeftColor: '#FF7043', // Narancsos-piros kiemelés
+  },
+  itemTitle: {
+    fontSize: 18,
     fontWeight: 'bold',
+    color: '#D84315', // Mély narancsos cím
+    marginBottom: 5,
+  },
+  itemDescription: {
+    fontSize: 16,
+    color: '#6D4C41', // Meleg barna árnyalat a leírásokhoz
   },
 });
+
+
+

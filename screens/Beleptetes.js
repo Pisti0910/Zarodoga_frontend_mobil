@@ -75,10 +75,64 @@ export default function Beleptetes({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    input: {
-      width: 200,
-      margin: 12,
+  container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: "#FFFAF0",
+      padding: 20,
+  },
+  header: {
+      fontSize: 28,
+      fontWeight: "bold",
+      color: "#FF5733",
+      marginBottom: 20,
+      textAlign: "center",
+  },
+  input: {
+      width: 250,
+      height: 45,
       borderWidth: 1,
-      padding: 10,
-    },
-  });
+      borderColor: "#FF7F50",
+      borderRadius: 25,
+      paddingHorizontal: 15,
+      backgroundColor: "#FFFFFF",
+      marginBottom: 15,
+      fontSize: 16,
+      color: "#333",
+  },
+  loginContainer: {
+      width: "90%",
+      alignItems: "center",
+      padding: 20,
+      backgroundColor: "#FFFFFF",
+      borderRadius: 10,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 3,
+  },
+  loggedInContainer: {
+      alignItems: "center",
+      backgroundColor: "#FFFFFF",
+      padding: 20,
+      borderRadius: 10,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 3,
+  },
+  welcomeText: {
+      fontSize: 22,
+      fontWeight: "bold",
+      color: "#FF5733",
+      marginBottom: 10,
+  },
+  userId: {
+      fontSize: 16,
+      color: "#555",
+      marginBottom: 15,
+  },
+});
